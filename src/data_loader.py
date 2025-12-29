@@ -1,3 +1,4 @@
+from pathlib import Path
 import pandas as pd
 from ucimlrepo import fetch_ucirepo
 
@@ -5,6 +6,9 @@ from src.config import RAW_DATA_PATH, PROCESSED_DATA_PATH
 
 
 def load_and_clean():
+    # Ensure directories exist
+    Path(RAW_DATA_PATH).parent.mkdir(parents=True, exist_ok=True)
+    Path(PROCESSED_DATA_PATH).parent.mkdir(parents=True, exist_ok=True)
     # Fetch dataset from UCI
     heart_disease = fetch_ucirepo(id=45)
 
