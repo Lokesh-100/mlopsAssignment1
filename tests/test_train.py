@@ -1,7 +1,5 @@
 import pandas as pd
-import numpy as np
 import pytest
-from unittest.mock import MagicMock
 
 import src.train as train_module
 
@@ -35,18 +33,25 @@ def test_train_pipeline(monkeypatch, tmp_path, sample_dataframe):
     # -------------------------
     # Mock MLflow
     # -------------------------
-    monkeypatch.setattr(train_module.mlflow, "set_tracking_uri", lambda *a, **k: None)
-    monkeypatch.setattr(train_module.mlflow, "set_experiment", lambda *a, **k: None)
-    monkeypatch.setattr(train_module.mlflow, "log_param", lambda *a, **k: None)
-    monkeypatch.setattr(train_module.mlflow, "log_params", lambda *a, **k: None)
-    monkeypatch.setattr(train_module.mlflow, "log_metric", lambda *a, **k: None)
-    monkeypatch.setattr(train_module.mlflow.sklearn, "log_model", lambda *a, **k: None)
+    monkeypatch.setattr(train_module.mlflow,
+                        "set_tracking_uri", lambda *a, **k: None)
+    monkeypatch.setattr(train_module.mlflow,
+                        "set_experiment", lambda *a, **k: None)
+    monkeypatch.setattr(train_module.mlflow,
+                        "log_param", lambda *a, **k: None)
+    monkeypatch.setattr(train_module.mlflow,
+                        "log_params", lambda *a, **k: None)
+    monkeypatch.setattr(train_module.mlflow,
+                        "log_metric", lambda *a, **k: None)
+    monkeypatch.setattr(train_module.mlflow.sklearn,
+                        "log_model", lambda *a, **k: None)
 
     class DummyRun:
         def __enter__(self): return self
         def __exit__(self, *args): pass
 
-    monkeypatch.setattr(train_module.mlflow, "start_run", lambda *a, **k: DummyRun())
+    monkeypatch.setattr(train_module.mlflow,
+                        "start_run", lambda *a, **k: DummyRun())
 
     # -------------------------
     # Mock joblib dump

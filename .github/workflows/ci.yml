@@ -52,6 +52,7 @@ jobs:
       # ----------------------------
       - name: Run unit tests
         run: |
+          export PYTHONPATH=$PYTHONPATH:$(pwd)
           pytest tests \
             --junitxml=test-results.xml \
             --cov=src \
@@ -69,6 +70,14 @@ jobs:
             test-results.xml
             htmlcov/
             coverage.xml
+
+      # ----------------------------
+      # Data Preparation
+      # ----------------------------
+      - name: Prepare dataset
+        run: |
+          export PYTHONPATH=$PYTHONPATH:$(pwd)
+          python -m src.data_loader
 
       # ----------------------------
       # Model Training

@@ -39,7 +39,10 @@ def train():
     # ------------------ Models ------------------
     models = {
         "LogisticRegression": LogisticRegression(max_iter=1000),
-        "RandomForest": RandomForestClassifier(n_estimators=100, random_state=42),
+        "RandomForest": RandomForestClassifier(
+            n_estimators=100,
+            random_state=42
+        ),
     }
 
     # ------------------ Ensure model directory exists ------------------

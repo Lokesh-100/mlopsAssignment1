@@ -9,6 +9,7 @@ from src.config import PROCESSED_DATA_PATH, ARTIFACT_DIR
 # ARTIFACT_DIR = "eda_artifacts"
 os.makedirs(ARTIFACT_DIR, exist_ok=True)
 
+
 def perform_eda_and_log():
     df = pd.read_csv(PROCESSED_DATA_PATH)
     target_col = df.columns[-1]
@@ -64,6 +65,7 @@ def perform_eda_and_log():
         mlflow.log_artifact(summary_path)
 
         print("✅ EDA logged successfully to experiment tracking")
+
 
 if __name__ == "__main__":
     perform_eda_and_log()

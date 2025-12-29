@@ -28,7 +28,6 @@ venv
 # Data files
 # =========================
 data/
-*.csv
 *.tsv
 *.parquet
 
