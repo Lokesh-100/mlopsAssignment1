@@ -4,7 +4,7 @@ from fastapi import FastAPI
 from pydantic import BaseModel
 
 app = FastAPI()
-model = joblib.load("models/heart_model.pkl")
+model = joblib.load("heart_models/heart_model.pkl")
 
 class Patient(BaseModel):
     age: int
