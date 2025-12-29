@@ -1,6 +1,5 @@
 import pandas as pd
 from sklearn.compose import ColumnTransformer
-from sklearn.preprocessing import StandardScaler, OneHotEncoder
 
 from src.preprocessing import get_preprocessor
 
@@ -26,6 +25,6 @@ def test_correct_columns_identified():
     preprocessor = get_preprocessor(X)
 
     num_transformer = preprocessor.transformers[0]
-    cat_transformer = preprocessor.transformers[1]
+    # cat_transformer = preprocessor.transformers[1]
 
     assert list(num_transformer[2]) == ["age", "chol"]
