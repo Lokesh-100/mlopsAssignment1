@@ -11,6 +11,10 @@ jobs:
     name: Lint → Test → Train
     runs-on: ubuntu-latest
 
+    env:
+      HF_REPO: adityabhuvangiri/heart_models
+      MODEL_VERSION: v${{ github.run_number }}
+
     defaults:
       run:
         shell: bash
@@ -96,3 +100,34 @@ jobs:
           path: |
             heart_models/
             mlruns/
+
+      # ----------------------------
+      # Login to Hugging Face
+      # ----------------------------
+      - name: Hugging Face Login
+        env:
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+        run: |
+          huggingface-cli login --token $HF_TOKEN
+
+      # ----------------------------
+      # Push Model to Hugging Face Hub
+      # ----------------------------
+      - name: Push model to Hugging Face
+        run: |
+          python - <<EOF
+          from huggingface_hub import upload_folder
+          import os
+
+          repo_id = os.environ["HF_REPO"]
+          version = os.environ["MODEL_VERSION"]
+
+          upload_folder(
+              repo_id=repo_id,
+              folder_path="heart_models",
+              path_in_repo=version,
+              commit_message=f"Upload model version {version}"
+          )
+
+          print(f"✅ Model pushed to {repo_id} as {version}")
+          EOF
