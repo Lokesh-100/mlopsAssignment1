@@ -102,9 +102,9 @@ jobs:
             heart_models/
             mlruns/
 
-      # - name: Install Hugging Face CLI
-      #   run: |
-      #     pip install --upgrade huggingface_hub
+      - name: Install Hugging Face CLI
+        run: |
+          pip install --upgrade huggingface_hub
 
       # # ----------------------------
       # # Login to Hugging Face
