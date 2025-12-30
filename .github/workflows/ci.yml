@@ -14,6 +14,7 @@ jobs:
     env:
       HF_REPO: adityabhuvangiri/heart_models
       MODEL_VERSION: v${{ github.run_number }}
+      HF_TOKEN: ${{ secrets.HF_TOKEN }}
 
     defaults:
       run:
@@ -101,18 +102,18 @@ jobs:
             heart_models/
             mlruns/
 
-      - name: Install Hugging Face CLI
-        run: |
-          pip install --upgrade huggingface_hub
+      # - name: Install Hugging Face CLI
+      #   run: |
+      #     pip install --upgrade huggingface_hub
 
-      # ----------------------------
-      # Login to Hugging Face
-      # ----------------------------
-      - name: Hugging Face Login
-        env:
-          HF_TOKEN: ${{ secrets.HF_TOKEN }}
-        run: |
-          huggingface-cli login --token $HF_TOKEN
+      # # ----------------------------
+      # # Login to Hugging Face
+      # # ----------------------------
+      # - name: Hugging Face Login
+      #   env:
+      #     HF_TOKEN: ${{ secrets.HF_TOKEN }}
+      #   run: |
+      #     python -m huggingface_hub.login --token $HF_TOKEN
 
       # ----------------------------
       # Push Model to Hugging Face Hub
@@ -130,6 +131,7 @@ jobs:
               repo_id=repo_id,
               folder_path="heart_models",
               path_in_repo=version,
+              token=os.environ["HF_TOKEN"],
               commit_message=f"Upload model version {version}"
           )
 
