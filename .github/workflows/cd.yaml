@@ -1,0 +1,51 @@
+name: MLOps CD Pipeline
+
+on:
+  workflow_dispatch:   # ✅ Manual trigger only
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repo
+      uses: actions/checkout@v4
+
+    - name: Set up kubectl
+      uses: azure/setup-kubectl@v3
+      with:
+        version: v1.30.0
+
+    - name: Configure kubeconfig
+      run: |
+        mkdir -p ~/.kube
+        cat <<EOF > ~/.kube/config
+        apiVersion: v1
+        kind: Config
+        clusters:
+        - name: cluster
+          cluster:
+            server: ${{ secrets.K8S_SERVER }}
+            certificate-authority-data: ${{ secrets.K8S_CA_CERT }}
+        contexts:
+        - name: context
+          context:
+            cluster: cluster
+            user: user
+            namespace: mlops
+        current-context: context
+        users:
+        - name: user
+          user:
+            token: ${{ secrets.K8S_TOKEN }}
+        EOF
+
+    - name: Deploy latest image
+      run: |
+        kubectl apply -f deployment/service.yaml
+        kubectl apply -f deployment/deployment.yaml
+        kubectl rollout restart deployment heart-api -n mlops
+
+    - name: Verify rollout
+      run: |
+        kubectl rollout status deployment heart-api -n mlops
