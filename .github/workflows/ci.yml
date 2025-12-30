@@ -8,7 +8,7 @@ on:
 
 jobs:
   ci:
-    name: Lint → Test → Train
+    name: Lint → Test → Train -> Push Model -> Create Docker Image  → Push Docker Image
     runs-on: ubuntu-latest
 
     env:
