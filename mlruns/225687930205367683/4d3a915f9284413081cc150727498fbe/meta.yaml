@@ -1,0 +1,14 @@
+artifact_uri: file:///Users/badrikishoremurthy/Downloads/mlops/mlopsAssignment1/mlruns/225687930205367683/4d3a915f9284413081cc150727498fbe/artifacts
+end_time: 1766506895626
+entry_point_name: ''
+experiment_id: '225687930205367683'
+lifecycle_stage: active
+run_id: 4d3a915f9284413081cc150727498fbe
+run_name: LogisticRegression
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1766506895597
+status: 4
+tags: []
+user_id: badrikishoremurthy

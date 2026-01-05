@@ -1,0 +1,10 @@
+artifact_location: file:///Users/badrikishoremurthy/Downloads/mlops/mlopsAssignment1/mlruns/225687930205367683/models/m-db8ef3fa62f149bdb97fc6a178e8fce6/artifacts
+creation_timestamp: 1767016152245
+experiment_id: '225687930205367683'
+last_updated_timestamp: 1767016153568
+model_id: m-db8ef3fa62f149bdb97fc6a178e8fce6
+model_type: null
+name: model
+source_run_id: 16b32fb699b74bbcacddb58b69a5fdef
+status: 2
+status_message: null

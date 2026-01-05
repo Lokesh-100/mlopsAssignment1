@@ -1,0 +1,14 @@
+artifact_uri: file:///Users/badrikishoremurthy/Downloads/mlops/mlopsAssignment1/mlruns/225687930205367683/83cf9ccadb37410898f09730250aa487/artifacts
+end_time: 1766507322415
+entry_point_name: ''
+experiment_id: '225687930205367683'
+lifecycle_stage: active
+run_id: 83cf9ccadb37410898f09730250aa487
+run_name: RandomForest
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1766507320617
+status: 3
+tags: []
+user_id: badrikishoremurthy

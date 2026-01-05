@@ -1,0 +1,22 @@
+artifact_path: file:///Users/badrikishoremurthy/Downloads/mlops/mlopsAssignment1/mlruns/225687930205367683/models/m-2f6e225b0bc449e1beb0538c3d9da241/artifacts
+flavors:
+  python_function:
+    env:
+      conda: conda.yaml
+      virtualenv: python_env.yaml
+    loader_module: mlflow.sklearn
+    model_path: model.pkl
+    predict_fn: predict
+    python_version: 3.9.6
+  sklearn:
+    code: null
+    pickled_model: model.pkl
+    serialization_format: cloudpickle
+    sklearn_version: 1.6.1
+mlflow_version: 3.1.4
+model_id: m-2f6e225b0bc449e1beb0538c3d9da241
+model_size_bytes: 2773
+model_uuid: m-2f6e225b0bc449e1beb0538c3d9da241
+prompts: null
+run_id: e770f2bf230c4ab0a61ea5de1812e5c9
+utc_time_created: '2025-12-29 13:44:33.054929'

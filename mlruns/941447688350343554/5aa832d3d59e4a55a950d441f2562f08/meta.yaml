@@ -1,0 +1,14 @@
+artifact_uri: file:///Users/badrikishoremurthy/Downloads/mlops/mlopsAssignment1/mlruns/941447688350343554/5aa832d3d59e4a55a950d441f2562f08/artifacts
+end_time: 1767613876438
+entry_point_name: ''
+experiment_id: '941447688350343554'
+lifecycle_stage: active
+run_id: 5aa832d3d59e4a55a950d441f2562f08
+run_name: EDA_Analysis
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1767613875867
+status: 3
+tags: []
+user_id: badrikishoremurthy

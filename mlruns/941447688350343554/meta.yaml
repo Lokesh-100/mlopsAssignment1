@@ -1,0 +1,6 @@
+artifact_location: file:///Users/badrikishoremurthy/Downloads/mlops/mlopsAssignment1/mlruns/941447688350343554
+creation_time: 1767613732385
+experiment_id: '941447688350343554'
+last_update_time: 1767613732385
+lifecycle_stage: active
+name: heart-disease-experiment
