@@ -25,9 +25,9 @@ The system uses a **Random Forest Classifier** selected for its high ROC-AUC sco
 
 ### Components
 | Component | Technology | 
-| :--- | :--- | :--- |
-| **Source Control** | Git & GitHub  |
-| **Experiment Tracking** | MLflow | 
+| :--- | :--- |
+| **Source Control** | Git & GitHub  | 
+| **Experiment Tracking** | MLflow |   
 | **Model Registry** | Hugging Face | 
 | **API Serving** | FastAPI | 
 | **Containerization** | Docker | 
