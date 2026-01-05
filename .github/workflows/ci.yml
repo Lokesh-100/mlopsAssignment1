@@ -89,6 +89,7 @@ jobs:
       # ----------------------------
       - name: Evaluate dataset
         run: |
+          rm -rf mlruns artifacts
           python -m src.evaluate
 
       # ----------------------------
