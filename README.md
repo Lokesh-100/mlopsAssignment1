@@ -19,7 +19,6 @@ The system uses a **Random Forest Classifier** selected for its high ROC-AUC sco
 ---
 
 ##  Architecture
-The system follows a modular "Everything as Code" architecture, integrating development, operations, and monitoring.
 
 <img width="2816" height="1536" alt="Block Diagram" src="https://github.com/user-attachments/assets/ecb55142-1412-45fd-8acb-0195c361e572" />
 
