@@ -3,8 +3,6 @@
 ![CI Pipeline](https://github.com/Lokesh-100/mlopsAssignment1/actions/workflows/ci.yml/badge.svg)
 ![CD Pipeline](https://github.com/Lokesh-100/mlopsAssignment1/actions/workflows/cd.yaml/badge.svg)
 ![Python](https://img.shields.io/badge/Python-3.8%2B-blue)
-![Docker](https://img.shields.io/badge/Docker-Containerized-blue)
-![Kubernetes](https://img.shields.io/badge/Kubernetes-Deployed-blue)
 
 ## 📋 Overview
 This project is a complete **End-to-End MLOps implementation** for predicting heart disease. It demonstrates a production-ready machine learning pipeline that includes experiment tracking, model versioning, continuous integration/deployment (CI/CD), and real-time monitoring on a Kubernetes cluster.
