@@ -9,7 +9,7 @@ This project is a complete **End-to-End MLOps implementation** for predicting he
 
 The system uses a **Random Forest Classifier** selected for its high ROC-AUC score and recall, ensuring reliable predictions for healthcare use cases.
 
-## 🚀 Live Demo & Resources
+##  Live Demo & Resources
 - **Live Application (Swagger UI)**: [Heart Disease Prediction API](https://heart-disease-prediction.c-158d220.kyma.ondemand.com/docs)
 - **Monitoring Dashboard (Grafana)**: [Grafana Dashboard](https://grafana-mlops.c-158d220.kyma.ondemand.com/dashboards)  
   *(Credentials: `admin` / `admin`)*
@@ -18,7 +18,7 @@ The system uses a **Random Forest Classifier** selected for its high ROC-AUC sco
 
 ---
 
-## 🏗️ Architecture
+##  Architecture
 The system follows a modular "Everything as Code" architecture, integrating development, operations, and monitoring.
 
 *(Note: Insert the architecture diagram image here in your repository and reference it)*
@@ -37,7 +37,7 @@ The system follows a modular "Everything as Code" architecture, integrating deve
 
 ---
 
-## 📂 Repository Structure
+##  Repository Structure
 ```bash
 ├── .github/workflows  # CI/CD pipeline definitions
 ├── app/               # FastAPI application code
