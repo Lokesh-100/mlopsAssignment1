@@ -11,4 +11,3 @@ pydantic
 pytest
 joblib
 httpx
-deepcopy
