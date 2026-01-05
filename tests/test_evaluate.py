@@ -41,6 +41,7 @@ def test_perform_eda_and_log(monkeypatch, tmp_path):
     class DummyRun:
         def __enter__(self):
             return self
+
         def __exit__(self, exc_type, exc, tb):
             pass
 
