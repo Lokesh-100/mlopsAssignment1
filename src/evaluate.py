@@ -8,7 +8,8 @@ from src.config import PROCESSED_DATA_PATH, ARTIFACT_DIR
 
 # ARTIFACT_DIR = "eda_artifacts"
 os.makedirs(ARTIFACT_DIR, exist_ok=True)
-
+mlflow.set_tracking_uri("file:./mlruns")
+mlflow.set_experiment("heart-disease-experiment")
 
 def perform_eda_and_log():
     df = pd.read_csv(PROCESSED_DATA_PATH)
