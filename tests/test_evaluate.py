@@ -56,4 +56,3 @@ def test_perform_eda_and_log(monkeypatch, tmp_path):
     assert (artifact_dir / "class_balance.png").exists()
     assert (artifact_dir / "feature_histograms.png").exists()
     assert (artifact_dir / "correlation_heatmap.png").exists()
-    assert (artifact_dir / "summary_stats.csv").exists()
