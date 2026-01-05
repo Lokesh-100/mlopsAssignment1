@@ -16,15 +16,11 @@ def sample_dataframe():
 def test_get_preprocessor_returns_column_transformer():
     X = sample_dataframe()
     preprocessor = get_preprocessor(X)
-
     assert isinstance(preprocessor, ColumnTransformer)
 
 
 def test_correct_columns_identified():
     X = sample_dataframe()
     preprocessor = get_preprocessor(X)
-
     num_transformer = preprocessor.transformers[0]
-    # cat_transformer = preprocessor.transformers[1]
-
     assert list(num_transformer[2]) == ["age", "chol"]

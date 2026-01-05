@@ -14,7 +14,6 @@ from src.config import PROCESSED_DATA_PATH, TARGET_COL, MODEL_PATH
 from src.preprocessing import get_preprocessor
 
 
-# ------------------ MLflow configuration ------------------
 mlflow.set_tracking_uri("file:./mlruns")
 mlflow.set_experiment("Heart Disease Prediction")
 
@@ -22,8 +21,6 @@ mlflow.set_experiment("Heart Disease Prediction")
 def train():
     # ------------------ Load and prepare data ------------------
     df = pd.read_csv(PROCESSED_DATA_PATH)
-
-    # Convert multi-class target to binary (0 = no disease, 1 = disease)
     df[TARGET_COL] = (df[TARGET_COL] > 0).astype(int)
 
     X = df.drop(columns=[TARGET_COL])
@@ -44,8 +41,6 @@ def train():
             random_state=42
         ),
     }
-
-    # ------------------ Ensure model directory exists ------------------
     Path(MODEL_PATH).parent.mkdir(parents=True, exist_ok=True)
 
     # ------------------ Training & MLflow logging ------------------
@@ -63,30 +58,19 @@ def train():
             )
 
             pipeline.fit(X_train, y_train)
-
             preds = pipeline.predict(X_test)
             probas = pipeline.predict_proba(X_test)[:, 1]
-
             acc = accuracy_score(y_test, preds)
             auc = roc_auc_score(y_test, probas)
-
-            # Log global parameters
             mlflow.log_param("model_name", name)
             mlflow.log_param("test_size", 0.2)
             mlflow.log_param("split_random_state", 42)
-
-            # Log model parameters safely
             model_params = model.get_params()
             model_params.pop("random_state", None)
             mlflow.log_params(model_params)
-
-            # Log metrics
             mlflow.log_metric("accuracy", acc)
             mlflow.log_metric("roc_auc", auc)
-
-            # Log model artifact
             mlflow.sklearn.log_model(pipeline, artifact_path="model")
-
             if auc > best_auc:
                 best_auc = auc
                 best_model = pipeline

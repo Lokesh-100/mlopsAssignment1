@@ -40,7 +40,7 @@ def test_predict_missing_field():
 
     response = client.post("/predict", json=payload)
 
-    assert response.status_code == 422  # validation error
+    assert response.status_code == 422
 
 
 def test_predict_invalid_type():

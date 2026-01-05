@@ -15,9 +15,6 @@ def sample_dataframe():
 
 
 def test_train_pipeline(monkeypatch, tmp_path, sample_dataframe):
-    # -------------------------
-    # Mock config paths
-    # -------------------------
     monkeypatch.setattr(
         train_module, "PROCESSED_DATA_PATH", tmp_path / "data.csv"
     )
@@ -27,12 +24,7 @@ def test_train_pipeline(monkeypatch, tmp_path, sample_dataframe):
     monkeypatch.setattr(
         train_module, "TARGET_COL", "target"
     )
-
     sample_dataframe.to_csv(tmp_path / "data.csv", index=False)
-
-    # -------------------------
-    # Mock MLflow
-    # -------------------------
     monkeypatch.setattr(train_module.mlflow,
                         "set_tracking_uri", lambda *a, **k: None)
     monkeypatch.setattr(train_module.mlflow,
@@ -52,18 +44,6 @@ def test_train_pipeline(monkeypatch, tmp_path, sample_dataframe):
 
     monkeypatch.setattr(train_module.mlflow,
                         "start_run", lambda *a, **k: DummyRun())
-
-    # -------------------------
-    # Mock joblib dump
-    # -------------------------
     monkeypatch.setattr(train_module.joblib, "dump", lambda *a, **k: None)
-
-    # -------------------------
-    # Execute training
-    # -------------------------
     train_module.train()
-
-    # -------------------------
-    # Assertions
-    # -------------------------
     assert (tmp_path / "model.pkl").exists() or True  # dump mocked
