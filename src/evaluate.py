@@ -3,6 +3,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 import mlflow
+from copy import deepcopy
 
 from src.config import PROCESSED_DATA_PATH, ARTIFACT_DIR
 
@@ -17,7 +18,6 @@ mlflow.set_experiment("heart-disease-experiment")
 
 def perform_eda_and_log():
     df = pd.read_csv(PROCESSED_DATA_PATH)
-    target_col = df.columns[-1]
 
     with mlflow.start_run(run_name="EDA_Analysis"):
 
@@ -31,9 +31,10 @@ def perform_eda_and_log():
         # Class Balance Plot
         # ----------------------------
         plt.figure(figsize=(6, 4))
-        sns.countplot(x=target_col, data=df)
+        plot_df = deepcopy(df)
+        plot_df.rename(columns={"num": "heart_disease_severity"}, inplace=True)
+        sns.countplot(x="heart_disease_severity", data=plot_df)
         plt.title("Class Distribution")
-
         class_plot_path = os.path.join(ARTIFACT_DIR, "class_balance.png")
         plt.savefig(class_plot_path)
         plt.close()
