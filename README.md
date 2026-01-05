@@ -24,28 +24,13 @@ The system uses a **Random Forest Classifier** selected for its high ROC-AUC sco
 
 
 ### Components
-| Component | Technology | Description |
+| Component | Technology | 
 | :--- | :--- | :--- |
-| **Source Control** | Git & GitHub | Hosts code, config, and dataset versioning. |
-| **Experiment Tracking** | MLflow | Tracks params, metrics, and EDA artifacts. |
-| **Model Registry** | Hugging Face | Stores versioned model binaries (tagged by CI run). |
-| **API Serving** | FastAPI | Exposes the model via high-performance REST endpoints. |
-| **Containerization** | Docker | Packages the app for consistent deployment. |
-| **Orchestration** | Kubernetes | Manages the application scaling and availability. |
-| **CI/CD** | GitHub Actions | Automates testing, training, and deployment. |
-| **Monitoring** | Grafana & Loki | Real-time log aggregation and system visualization. |
-
----
-
-##  Repository Structure
-```bash
-├── .github/workflows  # CI/CD pipeline definitions
-├── app/               # FastAPI application code
-├── deployment/        # Kubernetes manifests (deployment.yml, service.yml)
-├── heart_models/      # Local model storage (synced to Hugging Face)
-├── notebooks/         # EDA and experimentation notebooks
-├── src/               # Source code for data processing & training
-├── tests/             # Unit and integration tests
-├── Dockerfile         # Container definition
-├── requirements.txt   # Python dependencies
-└── README.md          # Project documentation
+| **Source Control** | Git & GitHub  |
+| **Experiment Tracking** | MLflow | 
+| **Model Registry** | Hugging Face | 
+| **API Serving** | FastAPI | 
+| **Containerization** | Docker | 
+| **Orchestration** | Kubernetes | 
+| **CI/CD** | GitHub Actions | 
+| **Monitoring** | Grafana & Loki | 
