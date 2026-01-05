@@ -62,7 +62,7 @@ def perform_eda_and_log():
         # ----------------------------
         summary_path = f"{ARTIFACT_DIR}/summary_stats.csv"
         df.describe().to_csv(summary_path)
-        mlflow.log_artifact(summary_path)
+        # mlflow.log_artifact(summary_path)
 
         print("✅ EDA logged successfully to experiment tracking")
 

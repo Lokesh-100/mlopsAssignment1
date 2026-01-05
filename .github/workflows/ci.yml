@@ -85,6 +85,13 @@ jobs:
           python -m src.data_loader
 
       # ----------------------------
+      # Data Evaluation
+      # ----------------------------
+      - name: Evaluate dataset
+        run: |
+          python -m src.evaluate
+
+      # ----------------------------
       # Model Training
       # ----------------------------
       - name: Train model
@@ -105,15 +112,6 @@ jobs:
       - name: Install Hugging Face CLI
         run: |
           pip install --upgrade huggingface_hub
-
-      # # ----------------------------
-      # # Login to Hugging Face
-      # # ----------------------------
-      # - name: Hugging Face Login
-      #   env:
-      #     HF_TOKEN: ${{ secrets.HF_TOKEN }}
-      #   run: |
-      #     python -m huggingface_hub.login --token $HF_TOKEN
 
       # ----------------------------
       # Push Model to Hugging Face Hub
