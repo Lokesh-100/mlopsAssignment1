@@ -16,7 +16,51 @@ The system uses a **Random Forest Classifier** selected for its high ROC-AUC sco
 - **Docker Image**: [aditya3298/mlops](https://hub.docker.com/r/aditya3298/mlops/tags)
 - **Model Artifacts**: [Hugging Face Hub](https://huggingface.co/adityabhuvangiri/heart_models/tree/main)
 
----
+## Manual Trigger & Usage Instructions
+
+Follow the steps below to manually trigger the data pipeline, train the model, and verify the test cases.
+
+#### 1) Prerequisites
+Ensure you are in the root directory of the project, then install the local package and required dependencies:
+
+```bash
+pip install .
+pip install -r requirements.txt
+```
+#### 2) Data Pipeline & Training
+Data Loading and Preprocessing Load the data. This script saves output CSVs to the data/raw and data/processed directories.
+```bash
+python3 src/data_loader.py
+```
+#### 3) Exploratory Data Analysis (EDA)
+Perform an evaluation of the data features.
+```bash
+python3 src/evaluate.py
+```
+#### 4) Model Training Train the Heart Disease detection model.
+This script trains LogisticRegression and RandomForestClassifier models, selects the best one based on the ROC-AUC score, and saves it as a pickle file.
+```bash
+python3 src/train.py
+```
+#### 5) Model Inference
+Run the main application to test the model's performance.
+```bash
+python3 app/main.py
+```
+#### Testing & Coverage
+Verify Test Cases Install the testing frameworks and run the suite in verbose mode.
+```bash
+pip install pytest pytest-mock
+python3 -m pytest -vv
+```
+#### Check Code Coverage
+To verify the test coverage, install the coverage tool and run the analysis.
+```bash
+pip install coverage
+coverage run -m pytest
+coverage report -m
+```
+For direct usage without manual setup, please refer to the live links provided in the Live Demo and Usages section.
 
 ##  Architecture
 
