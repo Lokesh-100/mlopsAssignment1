@@ -107,7 +107,7 @@ jobs:
           name: training-artifacts
           path: |
             heart_models/
-            mlruns/
+            artifacts/eda/
 
       - name: Install Hugging Face CLI
         run: |

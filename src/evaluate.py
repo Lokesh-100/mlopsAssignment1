@@ -1,13 +1,16 @@
+import os
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 import mlflow
-import os
 
 from src.config import PROCESSED_DATA_PATH, ARTIFACT_DIR
 
-# ARTIFACT_DIR = "eda_artifacts"
+# ----------------------------
+# Configuration
+# ----------------------------
 os.makedirs(ARTIFACT_DIR, exist_ok=True)
+
 mlflow.set_tracking_uri("file:./mlruns")
 mlflow.set_experiment("heart-disease-experiment")
 
@@ -19,7 +22,7 @@ def perform_eda_and_log():
     with mlflow.start_run(run_name="EDA_Analysis"):
 
         # ----------------------------
-        # Log basic dataset info
+        # Log dataset metadata
         # ----------------------------
         mlflow.log_param("num_rows", df.shape[0])
         mlflow.log_param("num_columns", df.shape[1])
@@ -30,22 +33,24 @@ def perform_eda_and_log():
         plt.figure(figsize=(6, 4))
         sns.countplot(x=target_col, data=df)
         plt.title("Class Distribution")
-        class_plot_path = f"{ARTIFACT_DIR}/class_balance.png"
+
+        class_plot_path = os.path.join(ARTIFACT_DIR, "class_balance.png")
         plt.savefig(class_plot_path)
         plt.close()
 
-        mlflow.log_artifact(class_plot_path)
+        mlflow.log_artifact(class_plot_path, artifact_path="eda")
 
         # ----------------------------
         # Feature Histograms
         # ----------------------------
         df.hist(figsize=(15, 10), bins=20)
         plt.suptitle("Feature Distributions")
-        hist_path = f"{ARTIFACT_DIR}/feature_histograms.png"
+
+        hist_path = os.path.join(ARTIFACT_DIR, "feature_histograms.png")
         plt.savefig(hist_path)
         plt.close()
 
-        mlflow.log_artifact(hist_path)
+        mlflow.log_artifact(hist_path, artifact_path="eda")
 
         # ----------------------------
         # Correlation Heatmap
@@ -53,20 +58,13 @@ def perform_eda_and_log():
         plt.figure(figsize=(12, 8))
         sns.heatmap(df.corr(), cmap="coolwarm", linewidths=0.5)
         plt.title("Correlation Heatmap")
-        heatmap_path = f"{ARTIFACT_DIR}/correlation_heatmap.png"
+
+        heatmap_path = os.path.join(ARTIFACT_DIR, "correlation_heatmap.png")
         plt.savefig(heatmap_path)
         plt.close()
 
-        mlflow.log_artifact(heatmap_path)
-
-        # ----------------------------
-        # Statistical Summary
-        # ----------------------------
-        summary_path = f"{ARTIFACT_DIR}/summary_stats.csv"
-        df.describe().to_csv(summary_path)
-        # mlflow.log_artifact(summary_path)
-
-        print("✅ EDA logged successfully to experiment tracking")
+        mlflow.log_artifact(heatmap_path, artifact_path="eda")
+        print("✅ EDA images stored locally AND logged to MLflow successfully")
 
 
 if __name__ == "__main__":
