@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: heart-api
-  namespace: mlops
+  namespace: test-aditya
 spec:
   replicas: 1
   selector:
